@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, AlgoButton, Pipeline, Input, Flash, Radio, SwitchNet, AlgoSendButton, ToastMessage } from 'pipeline-ui';
+import { Card, AlgoButton, Pipeline, Input, Radio, SwitchNet, AlgoSendButton, ToastMessage } from 'pipeline-ui';
 import { Algo } from '@pipeline-ui/icons';
 import styles from './styles.module.scss';
 
