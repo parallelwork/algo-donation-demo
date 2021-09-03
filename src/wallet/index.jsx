@@ -42,10 +42,6 @@ export default class Wallet extends React.Component {
 
   render() {
     const recipient = process.env.REACT_APP_RECIPIENT_ADDRESS;
-    console.log(
-      this.state.balance &&
-        parseFloat(this.state.amount || this.state.customAmount) > parseFloat(this.state.balance.split(' ')[0])
-    );
     return (
       <>
         <ToastMessage.Provider ref={(node) => (window.toastProvider = node)} />
