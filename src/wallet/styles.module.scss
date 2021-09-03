@@ -1,5 +1,4 @@
 .card {
-  margin-bottom: 15%;
   border-radius: 0.45rem;
   display: flex;
   flex-direction: column;
@@ -17,7 +16,6 @@
     }
 
     div {
-      width: fit-content;
       justify-content: center;
       :global(.algo-btn-solid) {
         background: linear-gradient(90deg, #1ca2e1 3%, #245ec7 97%);
