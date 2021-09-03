@@ -41,6 +41,7 @@ export default class Wallet extends React.Component {
   }
 
   render() {
+    const recipient = process.env.REACT_APP_RECIPIENT_ADDRESS;
     return (
       <>
         <ToastMessage.Provider ref={(node) => (window.toastProvider = node)} />
@@ -48,7 +49,7 @@ export default class Wallet extends React.Component {
           {this.state.address && (
             <>
               <h3>
-                <b>Current address:</b> {this.state.address}
+                <b>Current address:</b> My Address
               </h3>
               <h3
                 style={{
@@ -56,8 +57,7 @@ export default class Wallet extends React.Component {
                   alignItems: 'center',
                 }}
               >
-                <b>Balance:&nbsp;</b> {this.state.balance}{' '}
-                <Algo style={{ marginLeft: '3px' }} color="black" size="15" />
+                <b>Balance:&nbsp;</b> 2 Algos <Algo style={{ marginLeft: '3px' }} color="black" size="15" />
               </h3>
               <div className={styles.donate}>
                 <h3 className={styles.heading}>
@@ -116,12 +116,11 @@ export default class Wallet extends React.Component {
                   />
                 </h3>
                 <h3>
-                  <b>Recipient:</b> {this.props.recipient}
+                  <b>Recipient:</b> Donation Address
                 </h3>
-
                 <div className={styles.send}>
                   <AlgoSendButton
-                    recipient={this.props.recipient}
+                    recipient={recipient}
                     amount={parseInt(this.state.amount || this.state.customAmount) * 1000000}
                     note={this.state.message || ''}
                     context={this}
@@ -156,7 +155,3 @@ export default class Wallet extends React.Component {
     );
   }
 }
-
-Wallet.defaultProps = {
-  recipient: 'XC26IQQ4FFFI3AORB7KHK6Y6O2O2N5VT7SSYG2J74M2KSDSJV2CETX5NUE',
-};
