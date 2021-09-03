@@ -24,7 +24,14 @@
     }
   }
 
+  @media only screen and (max-width: 725px) {
+    h3 {
+      inline-size: 275px;
+    }
+  }
+
   h3 {
+    inline-size: none;
     position: relative;
     min-height: 0.8em;
     background: #f8f8f9;

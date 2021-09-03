@@ -25,12 +25,12 @@ export default class Wallet extends React.Component {
     }
   }, 10000);
 
-  changeAmount(e) {
+  changeAmount = (e) => {
     e.persist();
     if (e.target.value >= 0) {
       this.setState((s) => ({ ...s, customAmount: '', amount: e.target.value }));
     }
-  }
+  };
 
   componentDidUpdate(prevProps, prevState) {
     if (!prevState?.address && prevState?.address !== this.state.address) {
@@ -42,6 +42,10 @@ export default class Wallet extends React.Component {
 
   render() {
     const recipient = process.env.REACT_APP_RECIPIENT_ADDRESS;
+    console.log(
+      this.state.balance &&
+        parseFloat(this.state.amount || this.state.customAmount) > parseFloat(this.state.balance.split(' ')[0])
+    );
     return (
       <>
         <ToastMessage.Provider ref={(node) => (window.toastProvider = node)} />
@@ -49,7 +53,7 @@ export default class Wallet extends React.Component {
           {this.state.address && (
             <>
               <h3>
-                <b>Current address:</b> My Address
+                <b>Current address:</b> {this.state.address}
               </h3>
               <h3
                 style={{
@@ -57,7 +61,8 @@ export default class Wallet extends React.Component {
                   alignItems: 'center',
                 }}
               >
-                <b>Balance:&nbsp;</b> 2 Algos <Algo style={{ marginLeft: '3px' }} color="black" size="15" />
+                <b>Balance:&nbsp;</b> {this.state.balance}{' '}
+                <Algo style={{ marginLeft: '3px' }} color="black" size="15" />
               </h3>
               <div className={styles.donate}>
                 <h3 className={styles.heading}>
@@ -102,6 +107,15 @@ export default class Wallet extends React.Component {
                     marginTop="10px"
                   />
                 </h3>
+                {this.state.balance &&
+                  parseFloat(this.state.amount || this.state.customAmount) >
+                    parseFloat(this.state.balance.split(' ')[0]) && (
+                    <ToastMessage.Failure
+                      my={3}
+                      message={'Warning'}
+                      secondaryMessage={'This amount exceeds the wallet balance'}
+                    />
+                  )}
                 <h3 className={styles.heading}>
                   Message <i>(optional)</i>
                   <Input
@@ -116,7 +130,7 @@ export default class Wallet extends React.Component {
                   />
                 </h3>
                 <h3>
-                  <b>Recipient:</b> Donation Address
+                  <b>Recipient:</b> {recipient}
                 </h3>
                 <div className={styles.send}>
                   <AlgoSendButton
@@ -142,6 +156,7 @@ export default class Wallet extends React.Component {
               </div>
             </>
           )}
+
           {!this.state.address && (
             <div className={styles.button}>
               <div>

@@ -8,12 +8,14 @@ export default function App() {
     <div className="App">
       <div className="panels">
         <div className="info">
-          <h1>
-            Donate Algorand
-            <Algo style={{ marginLeft: '3px' }} color="black" size="50" />
-          </h1>
-          Welcome to the Algorand example donation app! Please connect your MyAlgo wallet in order to start using the
-          app.
+          <div className="description">
+            <h1>
+              Donate Algorand
+              <Algo style={{ marginLeft: '3px' }} color="black" size="50" />
+            </h1>
+            Welcome to the Algorand example donation app! <br />
+            Please connect your MyAlgo wallet in order to start using the app.
+          </div>
         </div>
         <div className="donation">
           <Wallet />
