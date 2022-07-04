@@ -13,8 +13,8 @@ export default function App() {
               Donate Algorand
               <Algo style={{ marginLeft: '3px' }} color="black" size="50" />
             </h1>
-            Welcome to the Algorand example donation app! <br />
-            Please connect your MyAlgo wallet in order to start using the app.
+            Connect your wallet to donate Algo to the designated charity.<br />
+            If you don't have a wallet you can use Magic to create on instantly with your email.
           </div>
         </div>
         <div className="donation">
